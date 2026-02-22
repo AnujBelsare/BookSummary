@@ -4,7 +4,6 @@ import RenderList from '../component/RenderList';
 
 const Index = () => {
 
-  // 1. Extract everything you want at the top of the page into this variable
   const PageHeader = () => (
     <View className='pb-4'>
       <View>
@@ -29,9 +28,7 @@ const Index = () => {
   );
 
   return (
-    // 2. Your main screen is now incredibly clean. Just flex-1 and the list!
     <View className='flex-1 bg-background px-4 '>
-      {/* 3. We pass the header into the list via a prop */}
       <RenderList header={PageHeader} /> 
     </View>
   );
