@@ -10,10 +10,10 @@ const Index = () => {
         <Image
           source={require('../../assets/images/home.jpg')}
           resizeMode="cover"
-          className='absolute w-full h-52 rounded-lg mt-4'
+          className='absolute w-full h-52 rounded-lg'
         />
-        <View className='relative top-4 left-0 w-full h-52 items-center justify-center rounded-lg bg-[#11111180] p-4'>
-          <Text className='text-4xl font-serifItalic text-[#e2ceaf] text-center'>
+        <View className='relative top-0 left-0 w-full h-52 items-center justify-center rounded-lg bg-[#11111180] p-4'>
+          <Text className='text-4xl z-10 font-serifItalic text-[#e2ceaf] text-center'>
             Welcome to Lumora !!!
           </Text>
         </View>

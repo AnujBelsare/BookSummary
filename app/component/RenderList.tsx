@@ -11,8 +11,8 @@ type Book = {
     title: string;
     author: string;
     averageRating: number;
-    genres: string[]; 
-    coverImage: string; 
+    genres: string[];
+    coverImage: string;
 };
 
 const RenderList = ({ header }: RenderListProps) => {
@@ -35,8 +35,8 @@ const RenderList = ({ header }: RenderListProps) => {
             }
 
             const json = await res.json();
-            
-            setBooks(json.data); 
+
+            setBooks(json.data);
         }
         catch (err: any) {
             console.log(err);
@@ -48,33 +48,36 @@ const RenderList = ({ header }: RenderListProps) => {
     }
 
     const renderBook: ListRenderItem<Book> = ({ item }) => (
-        <View className='w-[48%] mb-4 border p-2 border-textSecondary/30 rounded-xl bg-textPrimary shadow-sm flex-col justify-between'>
-            <View>
-                <Image
-                    source={{ uri: item.coverImage }}
-                    resizeMode="cover"
-                    className='w-full h-32 rounded-md bg-gray-200'
-                />
-                <View className='mt-2'>
-                    <Text className='text-center font-serif font-semibold text-xs' numberOfLines={1}>
-                        {item.title}
-                    </Text>
-                    <Text className='text-center font-sans font-medium text-[10px] opacity-70 mt-0.5' numberOfLines={1}>
-                        {item.author}
-                    </Text>
-                </View>
-                <View className='flex-row justify-between items-center mt-2 px-1'>
-                    <Text className='text-[10px]'>{item.averageRating}⭐</Text>
-                    
-                    <Text className='text-[10px] bg-textSecondary/20 px-1.5 py-0.5 rounded-md overflow-hidden'>
-                        {item.genres?.[0] || 'Unknown'}
-                    </Text>
-                </View>
-            </View>
+        <View className='w-[48%] mb-4 border px-2 border-textSecondary/30 rounded-xl bg-textPrimary shadow-sm flex-col justify-between'>
+
             <View className='mt-3'>
-                <Link href='/' asChild>
-                    <Pressable className='rounded-md bg-accent py-1 active:opacity-80'>
-                        <Text className='text-center font-sansBold text-[10px] text-white'>Read</Text>
+                <Link href={{
+                    pathname: "/book/[id]",
+                    params: {id: item._id}
+                }} asChild>
+                    <Pressable>
+                        <View>
+                            <Image
+                                source={{ uri: item.coverImage }}
+                                resizeMode="contain"
+                                className='w-full h-36 rounded-md'
+                            />
+                            <View className='mt-2 p-2'>
+                                <Text className='text-center font-serif font-semibold text-xs' numberOfLines={1}>
+                                    {item.title}
+                                </Text>
+                                <Text className='text-center font-sans font-medium text-[10px] opacity-70 mt-0.5' numberOfLines={1}>
+                                    {item.author}
+                                </Text>
+                            </View>
+                            <View className='flex-row justify-between items-center p-2 pb-3'>
+                                <Text className='text-[10px]'>{item.averageRating}⭐</Text>
+
+                                <Text className='text-[10px] bg-textSecondary/20 px-1.5 py-0.5 rounded-md overflow-hidden'>
+                                    {item.genres?.[0] || 'Unknown'}
+                                </Text>
+                            </View>
+                        </View>
                     </Pressable>
                 </Link>
             </View>
@@ -105,7 +108,7 @@ const RenderList = ({ header }: RenderListProps) => {
         <View className='flex-1 w-full'>
             <FlatList
                 data={books}
-                keyExtractor={(item) => item._id} 
+                keyExtractor={(item) => item._id}
                 renderItem={renderBook}
                 ListHeaderComponent={header}
                 numColumns={2}
