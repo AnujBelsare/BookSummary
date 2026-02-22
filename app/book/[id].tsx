@@ -1,7 +1,8 @@
 import { View, Text, ScrollView, ActivityIndicator, StyleSheet } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import { useLocalSearchParams } from 'expo-router';
+import { Stack, useLocalSearchParams } from 'expo-router';
 import Markdown from 'react-native-markdown-display';
+import Naver from '../component/Naver';
 
 type Summary = {
     content: string;
@@ -48,6 +49,7 @@ const BookSummary = () => {
     if (loading) {
         return (
             <View className='flex-1 justify-center items-center bg-background'>
+                <Stack.Screen options={{ headerShown: false }} />
                 <ActivityIndicator size="large" color="#d05aff" />
             </View>
         );
@@ -56,6 +58,8 @@ const BookSummary = () => {
     if (error) {
         return (
             <View className='flex-1 justify-center items-center bg-background p-4'>
+                <Stack.Screen options={{ headerShown: false }} />
+                <Naver />
                 <Text className='text-red-500 text-center font-sans'>{error}</Text>
             </View>
         );
@@ -63,18 +67,12 @@ const BookSummary = () => {
 
     return (
         <View className='flex-1 bg-background'>
+            <Stack.Screen options={{ headerShown: false }} />
+            <Naver readingTime={summary?.readingTime} />
             <ScrollView
                 showsVerticalScrollIndicator={false}
-                contentContainerStyle={{ padding: 16, paddingBottom: 60 }} // Safe bottom padding
+                contentContainerStyle={{ padding: 16, paddingBottom: 60 }}
             >
-                {summary?.readingTime ? (
-                    <View className='mb-4 pb-4 border-b border-textSecondary/20'>
-                        <Text className='text-accent font-sans font-medium text-sm'>
-                            ⏱️ {summary.readingTime} min read
-                        </Text>
-                    </View>
-                ) : null}
-
                 <Markdown style={markdownStyles}>
                     {summary?.content || "*No summary available for this book.*"}
                 </Markdown>
