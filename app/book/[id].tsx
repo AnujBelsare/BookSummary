@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, ActivityIndicator } from 'react-native';
+import { View, Text, ScrollView, ActivityIndicator, StyleSheet } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useLocalSearchParams } from 'expo-router';
 import Markdown from 'react-native-markdown-display';
@@ -69,7 +69,7 @@ const BookSummary = () => {
             >
                 {summary?.readingTime ? (
                     <View className='mb-4 pb-4 border-b border-textSecondary/20'>
-                        <Text className='text-textSecondary font-sans font-medium text-sm'>
+                        <Text className='text-accent font-sans font-medium text-sm'>
                             ⏱️ {summary.readingTime} min read
                         </Text>
                     </View>
@@ -83,7 +83,7 @@ const BookSummary = () => {
     );
 }
 
-const markdownStyles = {
+const markdownStyles = StyleSheet.create({
     body: {
         fontFamily: 'serif',
         fontSize: 16,
@@ -102,7 +102,121 @@ const markdownStyles = {
         marginBottom: 8,
         marginTop: 14,
         color: '#F0ECE2',
+    },
+    hr: {
+        backgroundColor: '#333333',
+        height: 1,
+        marginVertical: 24,
+        alignSelf: 'center',
+        width: '98%',
+    },
+    blockquote: {
+        backgroundColor: '#1c1c1e',
+        borderLeftWidth: 4,
+        borderLeftColor: '#555555',
+        paddingHorizontal: 16,
+        paddingVertical: 12,
+        marginVertical: 16,
+        borderTopRightRadius: 8,
+        borderBottomRightRadius: 8,
+    },
+    em: {
+        fontStyle: 'italic',
+        color: '#A8A8A8',
+    },
+    strong: {
+        fontWeight: 'bold',
+        color: '#F0ECE2',
+    },
+    link: {
+        color: '#007AFF',
+        textDecorationLine: 'none',
+    },
+    code_inline: {
+        fontFamily: 'monospace',
+        backgroundColor: '#2c2c2e',
+        color: '#ff9f0a',
+        borderRadius: 4,
+        paddingHorizontal: 6,
+        paddingVertical: 2,
+        overflow: 'hidden',
+    },
+    fence: {
+        fontFamily: 'monospace',
+        backgroundColor: '#1c1c1e',
+        color: '#e5e5e5',
+        padding: 16,
+        borderRadius: 8,
+        marginVertical: 16,
+        borderWidth: 1,
+        borderColor: '#333333',
+        overflow: 'hidden',
+    },
+    table: {
+        borderWidth: 1,
+        borderColor: '#333333',
+        borderRadius: 8,
+        marginVertical: 16,
+    },
+    th: {
+        fontWeight: 'bold',
+        color: '#ffffff',
+        padding: 12,
+        backgroundColor: '#222222',
+        borderBottomWidth: 1,
+        borderBottomColor: '#333333',
+    },
+    td: {
+        color: '#e5e5e5',
+        padding: 12,
+        borderBottomWidth: 1,
+        borderBottomColor: '#222222',
+    },
+    heading3: {
+        color: '#F0ECE2',
+        marginTop: 16,
+        marginBottom: 8,
+    },
+    heading4: {
+        color: '#F0ECE2',
+        marginTop: 16,
+        marginBottom: 8,
+    },
+    heading5: {
+        color: '#F0ECE2',
+        marginTop: 16,
+        marginBottom: 8,
+    },
+    heading6: {
+        color: '#F0ECE2',
+        marginTop: 16,
+        marginBottom: 8,
+    },
+    bullet_list: {
+        marginVertical: 12,
+    },
+    ordered_list: {
+        marginVertical: 12,
+    },
+    list_item: {
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        marginBottom: 8,
+    },
+    bullet_list_icon: {
+        color: 'rgba(240, 236, 226, 0.7)',
+        fontSize: 16,
+        marginRight: 10,
+        lineHeight: 24,
+    },
+    ordered_list_icon: {
+        color: 'rgba(240, 236, 226, 0.7)',
+        fontFamily: 'sans-serif',
+        fontSize: 16,
+        marginRight: 10,
+        lineHeight: 24,
+        fontWeight: 'bold',
     }
-};
+});
 
 export default BookSummary;
