@@ -21,8 +21,9 @@ export default function TabLayout() {
                 options={{
                     title: "Lumora",
                     headerTitleStyle: {
-                        fontFamily: "GoogleSansSemiBold",
-                        fontSize: 26,
+                        fontFamily: "sansSemi",
+                        fontSize: 36,
+                        fontWeight: 600,
                         color: '#9381FF'
                     },
                     tabBarIcon: ({ color, focused }) => (
@@ -40,8 +41,9 @@ export default function TabLayout() {
                 options={{
                     title: "Wishlist",
                     headerTitleStyle: {
-                        fontFamily: "GoogleSansSemiBold",
-                        fontSize: 26,
+                        fontFamily: "sansSemi",
+                        fontSize: 36,
+                        fontWeight: 600,
                         color: '#9381FF'
                     },
                     tabBarIcon: ({ color, focused }) => (

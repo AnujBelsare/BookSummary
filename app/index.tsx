@@ -4,7 +4,9 @@ import { Text, View } from "react-native";
 export default function Index() {
   return (
     <View className="flex-1 items-center justify-center bg-background">
-      <Text className="text-center text-2xl font-serifBold text-accent">
+      <Text className="text-center text-2xl 
+      font-serif font-semibold text-accent"
+      >
         Lumora
       </Text>
 
